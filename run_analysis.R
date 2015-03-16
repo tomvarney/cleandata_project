@@ -7,12 +7,12 @@
 #not sure if training and test files will be directly in working directory, or unzipped into folders
 # so try each one to see which ....
 if (file.exists("X_train.txt"))
-  {
-    X_train <- read.table("X_train.txt", quote="\"")
-  } else
-  {
-    X_train <- read.table("train/X_train.txt", quote="\"")
-  }
+{
+  X_train <- read.table("X_train.txt", quote="\"")
+} else
+{
+  X_train <- read.table("train/X_train.txt", quote="\"")
+}
 
 if (file.exists("X_test.txt"))
 {
@@ -22,7 +22,7 @@ if (file.exists("X_test.txt"))
   X_test <- read.table("test/X_test.txt", quote="\"")
 }
 
-         
+
 #get the labels Training and Test
 if (file.exists("y_train.txt"))
 {
@@ -94,7 +94,8 @@ X_train$activity <- factor(X_train$activity, labels = c("WALKING", "WALKING_UPST
 str(X_train)
 
 #write out the finished dataset
-write.table(X_train, file = "observations.csv", sep = ",", row.names=FALSE, col.names = TRUE)
+#suppress the writing out of thisfile
+#write.table(X_train, file = "observations.csv", sep = ",", row.names=FALSE, col.names = TRUE)
 
 ######################################################
 #create data set of averages by subject and activity
@@ -120,7 +121,6 @@ str(df_averages)
 
 #write it out
 write.table(df_averages, file = "subject_activity_averages.csv", sep = ",", row.names=FALSE, col.names = TRUE)
-
 
 
 
